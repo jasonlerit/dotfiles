@@ -16,7 +16,7 @@ return {
     mappings = {},
     templates = {
       folder = "03 - Templates",
-      date_format = "%Y-%m-%d",
+      date_format = "%A | %B %d, %Y",
       time_format = "%I:%M %p",
       substitutions = {},
     },
