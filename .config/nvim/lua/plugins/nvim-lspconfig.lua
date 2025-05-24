@@ -3,12 +3,14 @@ return {
   config = function()
     require("nvchad.configs.lspconfig").defaults()
 
+    local home = os.getenv "HOME" or "~"
+
     local on_attach = require("nvchad.configs.lspconfig").on_attach
     local on_init = require("nvchad.configs.lspconfig").on_init
     local capabilities = require("nvchad.configs.lspconfig").capabilities
 
     local lspconfig = require "lspconfig"
-    local servers = { "eslint", "tailwindcss", "ts_ls" }
+    local servers = { "eslint", "tailwindcss", "ts_ls", "intelephense" }
 
     local function organize_imports()
       local params = {
@@ -22,6 +24,7 @@ return {
     for _, lsp in ipairs(servers) do
       local commands = {}
       local init_options = {}
+      local settings = {}
 
       if lsp == "ts_ls" then
         commands = {
@@ -37,12 +40,26 @@ return {
         }
       end
 
+      if lsp == "intelephense" then
+        settings = {
+          intelephense = {
+            environment = {
+              includePaths = { home .. "/dev/pmmp/src" },
+            },
+            files = {
+              maxSize = 5000000,
+            },
+          },
+        }
+      end
+
       lspconfig[lsp].setup {
         on_attach = on_attach,
         on_init = on_init,
         capabilities = capabilities,
         commands = commands,
         init_options = init_options,
+        settings = settings,
       }
     end
   end,
