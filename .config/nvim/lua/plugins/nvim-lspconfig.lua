@@ -44,7 +44,7 @@ return {
         settings = {
           intelephense = {
             environment = {
-              includePaths = { home .. "/dev/pmmp/src" },
+              includePaths = { home .. "/dev/pmmp/src", home .. "/dev/pmmp/vendor" },
             },
             files = {
               maxSize = 5000000,
