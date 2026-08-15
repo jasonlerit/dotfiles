@@ -8,8 +8,6 @@ DOTFILES=(
     ".tmux.conf"
     ".config/lazygit"
     ".config/nvim"
-    ".config/skhd"
-    ".config/yabai"
 )
 
 for DOTFILE in "${DOTFILES[@]}"; do
