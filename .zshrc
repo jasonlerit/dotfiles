@@ -123,3 +123,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 eval "$(zoxide init --cmd cd zsh)"
 export PATH="$HOME/.local/bin:$PATH"
+
+# opencode
+export PATH=/Users/j/.opencode/bin:$PATH
